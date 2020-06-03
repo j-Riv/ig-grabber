@@ -115,7 +115,8 @@ function getInstagramMedia($url) {
  * posts and media are created and saved.
  */
 function printImages($token){
-	$url = 'https://graph.instagram.com/me/media?fields=id,media_type,media_url,thumbnail_url,caption,timestamp&access_token='. $token;
+  $fieldList = 'id,media_type,media_url,thumbnail_url,caption,timestamp';
+	$url = 'https://graph.instagram.com/me/media?fields='. $fieldList. '&access_token='. $token;
 	$instagramData = getInstagramMedia($url);
 	$result = json_decode($instagramData, true);
 
@@ -123,7 +124,7 @@ function printImages($token){
 		$image_url = $item['media_url'];
 		$created_time = $item['timestamp'];
 		$caption = $item['caption'];
-		$caption = explode('#', $caption, 2);
+    $caption = explode('#', $caption, 2);
 		$caption = $caption[0];
 
     $formatted_time = date('m-d-Y_H-i-s-a', strtotime($created_time));
