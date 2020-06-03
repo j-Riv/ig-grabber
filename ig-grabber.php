@@ -220,7 +220,7 @@ function saveVideo($video_url, $created_time, $caption){
 }
 
 // run
-$code = getNewToken();
-printImages($code);
+$token = getNewToken();
+printImages($token);
 ?>
 
