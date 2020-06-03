@@ -7,7 +7,7 @@
     - Add Instagram as a product.
     - Create a new Instagram app (<i>Products > Instagram > Basic Display</i>).
     - Add Instagram Tester(s)
-    - Generate Access Token using the User Token Generator under Products > Instagram > Basic Display (<i>Tokens can only be generated for public accounts</i>).
+    - Generate Access Token using the User Token Generator under Products > Instagram > Basic Display (<i>Tokens can only be generated for public accounts. You can use the Instagram Basic Display API for personal use by using a tester.</i>)
 
 Project assumes you have or will create a database table to save Instagram token data with the following columns: <i>access_token</i>, <i>token_type</i> and <i>expires_in</i>.
 
