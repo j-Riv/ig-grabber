@@ -1,8 +1,8 @@
 <?php
 define('WP_USE_THEMES', false);
-require($_SERVER['DOCUMENT_ROOT']. '/wp-blog-header.php');
-require_once ( ABSPATH. '/wp-admin/includes/post.php' );
-require_once ( ABSPATH. '/wp-admin/includes/image.php' );
+require_once($_SERVER['DOCUMENT_ROOT']. '/wp-blog-header.php');
+require_once( ABSPATH. '/wp-admin/includes/post.php' );
+require_once( ABSPATH. '/wp-admin/includes/image.php' );
 
 set_time_limit(0); // script will run for an infinite amount of time
 ini_set('default_socket_timeout', 600); // server settings
@@ -67,7 +67,8 @@ function updateToken($token, $type, $expiration) {
 }
 
 /** 
- * Gets a new 'Long-Lived Token' from Instagram. 
+ * Gets a new 'Long-Lived Token' from Instagram.
+ * @returns - Long Lived Token (exp: 60 days)
 */
 function getNewToken() {
   $old_token = getOldToken();
@@ -113,6 +114,7 @@ function getInstagramMedia($url) {
 /**
  * Prints media to screen for verification while
  * posts and media are created and saved.
+ * @param {string} $token - The Access Token
  */
 function printImages($token){
   $fieldList = 'id,media_type,media_url,thumbnail_url,caption,timestamp';
@@ -146,6 +148,9 @@ function printImages($token){
 
 /**
  * Saves images to database and creates blog post.
+ * @param {string} $image_url - The image url
+ * @param {string} $created_time - The created time
+ * @param {string} $caption - The image caption
  */
 function savePicture($image_url, $created_time, $caption){
   echo $image_url. '<br />';
@@ -193,6 +198,9 @@ function savePicture($image_url, $created_time, $caption){
 
 /**
  * Saves videos to database. 
+ * @param {string} $video_url - The video url
+ * @param {string} $created_time - The created time
+ * @param {string} $caption - The image caption
  */
 function saveVideo($video_url, $created_time, $caption){
   echo $video_url. '<br />';
