@@ -133,12 +133,12 @@ function printImages($token){
 				$image_url = $item['thumbnail_url'];
 				$video_url = $item['media_url'];
 				echo '<embed src="'. $video_url. '" /> <br/>';
-				savePicture($image_url, $formatted_time, $caption);
-				saveVideo($video_url, $formatted_time, $caption);
+				savePicture($image_url, $created_time, $caption);
+				saveVideo($video_url, $created_time, $caption);
 			}elseif($item['media_type'] == "IMAGE"){
 				$image_url = $item['media_url'];
 				echo '<img src="'. $image_url. '" /> <br/>';
-				savePicture($image_url, $formatted_time, $caption);
+				savePicture($image_url, $created_time, $caption);
 			}
 		} else {
 			echo '<br/><b>POST EXISTS SKIPPING</b><br/>';
@@ -232,3 +232,4 @@ function saveVideo($video_url, $created_time, $caption){
 $code = getNewToken();
 printImages($code);
 ?>
+
