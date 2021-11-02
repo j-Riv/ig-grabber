@@ -85,9 +85,11 @@ function getNewToken() {
 	curl_close($ch); // close the curl session
 
   $data = json_decode($result);
-  updateToken($data->access_token, $data->token_type, $data->expires_in);
-
-	return $data->access_token;
+  if (property_exists($data, "access_token") && !is_null($data->access_token) && !empty($data->access_token)) {
+    updateToken($data->access_token, $data->token_type, $data->expires_in);
+    return $data->access_token;
+  }
+  return false;
 }
 
 /**
@@ -230,6 +232,10 @@ function saveVideo($video_url, $created_time, $caption){
 
 // run
 $code = getNewToken();
-printImages($code);
+if ($code) {
+  printImages($code);
+} else {
+  echo 'ERROR, NO ACCESS TOKEN';
+}
 ?>
 
